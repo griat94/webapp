@@ -1,0 +1,34 @@
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 50px;
+}
+
+.btn_primary {
+    width: 8em; 
+    font-size: x-large; 
+    background-color: darkblue; 
+    color: white;
+    padding: 0;
+}
+
+.btn_secondary {
+    font-size: x-large; 
+    color: darkblue;
+    padding: 0;
+}
+
+.btn_primary:hover {
+    background-color: blue;
+    color: black;
+}
+
+.btn_secondary:hover {
+    color: black;
+}
+
+.jumbotron-display {
+    text-align: center;
+    background-color: darkgoldenrod;
+    color: darkblue;
+}
