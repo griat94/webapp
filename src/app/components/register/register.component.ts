@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Person } from '../../interfaces/Person';
+import { RegisterService } from 'src/app/services/RegisterService/register.service';
 
 @Component({
   selector: 'app-register',
@@ -8,8 +10,17 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+  person: Person = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: null,
+    id: null
+  }
+
   constructor(
-    private router: Router
+    private router: Router,
+    private registerService: RegisterService
   ) { }
 
   ngOnInit() {
@@ -17,6 +28,11 @@ export class RegisterComponent implements OnInit {
 
   goBackToHome() {
     this.router.navigate(['/home']);
+  }
+
+  registerPerson() {
+    console.log(this.person);
+    this.registerService.registerPerson(this.person);
   }
 
 }

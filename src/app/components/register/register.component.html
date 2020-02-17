@@ -6,26 +6,26 @@
     <div class="form-group space">
       <label for="register-first-name">First Name</label>
       <input class="form-control form-control-lg input-width" id="register-first-name" type="text"
-        placeholder="Enter your first name...">
+        [(ngModel)]="person.firstName" name="firstName" placeholder="Enter your first name...">
     </div>
     <div class="form-group space">
       <label for="register-last-name">Last Name</label>
       <input class="form-control form-control-lg input-width" id="register-last-name" type="text"
-        placeholder="Enter your last name...">
+        [(ngModel)]="person.lastName" name="lastName" placeholder="Enter your last name...">
     </div>
     <div class="form-group space">
       <label for="register-email">Email Address</label>
       <input class="form-control form-control-lg input-width" id="register-email" type="email"
-        placeholder="Enter your e-mail...">
+        [(ngModel)]="person.email" name="email" placeholder="Enter your e-mail...">
     </div>
     <div class="form-group space">
       <label for="register-phone-number">Phone</label>
       <input class="form-control form-control-lg input-width" id="register-phone-number" type="tel"
-        placeholder="Enter your phone number...">
+        [(ngModel)]="person.phone" name="phone" placeholder="Enter your phone number...">
     </div>
 
     <div class="form-group space buttons">
-      <button type="submit" class="btn btn_primary">Register</button>
+      <button type="submit" class="btn btn_primary" (click)="registerPerson()">Register</button>
       <button type="button" class="btn btn_secondary" (click)="goBackToHome()">Cancel</button>
     </div>
   </form>
