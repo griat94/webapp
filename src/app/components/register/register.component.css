@@ -5,13 +5,16 @@
 }
 
 .register-form {
-    margin: 0 25%;
     padding: 20px;
-    width: 32%;
+    width: 40%;
     align-self: center;
 }
 
 .space {
-    padding: 25px 0;
+    padding: 10px 0;
     font-size: xx-large;
+}
+
+.invalid-text-size {
+    font-size: medium;
 }
