@@ -7,18 +7,17 @@ import { User } from 'src/app/interfaces/User';
 })
 
 export class RegisterService {
-  url = "http://localhost:8080/app/";
+  baseUrl = "http://localhost:8080/app/";
 
   constructor(
     private http: HttpClient
   ) { }
 
   registerUser(user: User) {
-    return this.http.post(this.url + "register", user)
-      .subscribe();
+    return this.http.post(this.baseUrl + "register", user);
   }
 
   getUsers() {
-    return this.http.get(this.url + "getPersons");
+    return this.http.get(this.baseUrl + "getPersons");
   }
 }
