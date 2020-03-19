@@ -41,7 +41,14 @@ export class LoginComponent implements OnInit {
       return;
     } else {
       this.loginService.tryLogin(this.loginForm.value)
-        .subscribe((val) => console.log(val));
+        .subscribe((val) => {
+          if (val) {
+            this.router.navigate(['/myWorkout']);
+          }
+          else {
+            alert("Incorrect username or password! Please try again!")
+          }
+        });
     }
   }
 }

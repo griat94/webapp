@@ -1,29 +1,27 @@
 <div class="login-page">
-  <div class="jumbotron jumbotron-display">
-    <h1>Login</h1>
-  </div>
-  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="form-group space">
-      <label for="login-username">Username</label>
-      <input formControlName="username" class="form-control form-control-lg input-width" type="text"
-        placeholder="Type your username..." [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-      <div *ngIf="submitted && f.username.errors" class="invalid-feedback invalid-text-size">
-        <div *ngIf="f.username.errors.required">Username is required</div>
-        <div *ngIf="f.username.errors.minlength">Username must contain atleast 4 characters</div>
-      </div>
+    <div class="jumbotron jumbotron-display">
+        <h1>Login</h1>
     </div>
-    <div class="form-group space">
-      <label for="login-password">Password</label>
-      <input formControlName="password" class="form-control form-control-lg input-width" type="password"
-        placeholder="Type your password..." [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-      <div *ngIf="submitted && f.password.errors" class="invalid-feedback invalid-text-size">
-        <div *ngIf="f.password.errors.required">Password is required</div>
-        <div *ngIf="f.password.errors.minlength">Password must contain atleast 6 characters</div>
-      </div>
-    </div>
-    <div class="form-group space buttons">
-      <button type="submit" class="btn btn_primary">Login</button>
-      <button type="button" class="btn btn_secondary" (click)="goBackToHome()">Cancel</button>
-    </div>
-  </form>
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group space">
+            <label for="login-username">Username</label>
+            <input formControlName="username" class="form-control form-control-lg input-width" type="text" placeholder="Type your username..." [ngClass]="{ 'is-invalid': submitted && f.username.errors }" autocomplete="off">
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback invalid-text-size">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+                <div *ngIf="f.username.errors.minlength">Username must contain atleast 4 characters</div>
+            </div>
+        </div>
+        <div class="form-group space">
+            <label for="login-password">Password</label>
+            <input formControlName="password" class="form-control form-control-lg input-width" type="password" placeholder="Type your password..." [ngClass]="{ 'is-invalid': submitted && f.password.errors }" autocomplete="off">
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback invalid-text-size">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must contain atleast 6 characters</div>
+            </div>
+        </div>
+        <div class="form-group space buttons">
+            <button type="submit" class="btn btn_primary">Login</button>
+            <button type="button" class="btn btn_secondary" (click)="goBackToHome()">Cancel</button>
+        </div>
+    </form>
 </div>

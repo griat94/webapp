@@ -1,19 +1,37 @@
-.login-page {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+@media (min-width: 501px) {
+    .login-page {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .login-form {
+        margin: 0 25%;
+        padding: 20px;
+        width: 400px;
+        align-self: center;
+    }
+    .space {
+        padding: 25px 0;
+        font-size: xx-large;
+    }
 }
 
-.login-form {
-    margin: 0 25%;
-    padding: 20px;
-    width: 32%;
-    align-self: center;
-}
-
-.space {
-    padding: 25px 0;
-    font-size: xx-large;
+@media (max-width: 500px) {
+    .login-page {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .login-form {
+        margin: 0 25%;
+        padding: 20px;
+        width: 280px;
+        align-self: center;
+    }
+    .space {
+        padding: 25px 0;
+        font-size: xx-large;
+    }
 }
 
 .invalid-text-size {

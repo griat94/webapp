@@ -1,18 +1,37 @@
-.register-page {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+@media (min-width: 551px) {
+    .register-page {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .register-form {
+        margin: 0 25%;
+        padding: 20px;
+        width: 450px;
+        align-self: center;
+    }
+    .space {
+        padding: 10px 0;
+        font-size: xx-large;
+    }
 }
 
-.register-form {
-    padding: 20px;
-    width: 40%;
-    align-self: center;
-}
-
-.space {
-    padding: 10px 0;
-    font-size: xx-large;
+@media (max-width: 550px) {
+    .register-page {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .register-form {
+        margin: 0 25%;
+        padding: 20px;
+        width: 380px;
+        align-self: center;
+    }
+    .space {
+        padding: 10px 0;
+        font-size: xx-large;
+    }
 }
 
 .invalid-text-size {

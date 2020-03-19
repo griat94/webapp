@@ -1,0 +1,123 @@
+<div>
+    <div class="jumbotron jumbotron-display">
+        <h1>My Workouts</h1>
+    </div>
+
+    <div class="space buttons" style="padding: 10px;">
+        <button type="button" class="btn btn_primary" data-toggle="modal" data-target="#addWorkout" data-backdrop="static">Add Workout</button>
+        <button type="button" class="btn btn_primary">Logout</button>
+    </div>
+
+    <div class="modal fade" id="addWorkout" tabindex="-1" role="dialog" aria-labelledby="addWorkoutLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="addWorkoutLabel">Add Your Workout</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    <form class="workout-form" [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group space">
+                            <label for="workout-workout-type">Workout Type</label>
+                            <input formControlName="workoutType" class="form-control form-control-lg input-width" type="text" placeholder="Enter the type of workout completed..." [ngClass]="{ 'is-invalid': submitted && f.workoutType.errors }">
+                            <div class="small-text">For Example: Chest, Arms or Legs</div>
+                            <div *ngIf="submitted && f.workoutType.errors" class="invalid-feedback invalid-text-size">
+                                <div *ngIf="f.workoutType.errors.required">Workout Type is required</div>
+                                <div *ngIf="f.workoutType.errors.pattern">Invalid Workout Type. Try using just alphabets!</div>
+                            </div>
+                        </div>
+                        <div class="form-group space">
+                            <label for="workout-exercise-name">Exercise Name</label>
+                            <input formControlName="exerciseName" class="form-control form-control-lg input-width" type="text" placeholder="Enter the exercise completed..." [ngClass]="{ 'is-invalid': submitted && f.exerciseName.errors }">
+                            <div *ngIf="submitted && f.exerciseName.errors" class="invalid-feedback invalid-text-size">
+                                <div *ngIf="f.exerciseName.errors.required">Exercise Name is required</div>
+                                <div *ngIf="f.workoutType.errors.pattern">Invalid Exercise Name. Try using just alphabets!</div>
+                            </div>
+                        </div>
+                        <div class="form-group space">
+                            <label for="workout-sets">Sets</label>
+                            <select formControlName="sets" class="form-control form-control-lg input-width" [ngClass]="{ 'is-invalid': submitted && f.sets.errors }">
+                                <option selected value="">Enter the number of sets...</option>
+                                <option selected value="1">1</option>
+                                <option selected value="2">2</option>
+                                <option selected value="3">3</option>
+                                <option selected value="4">4</option>
+                                <option selected value="5">5</option>
+                            </select>
+                            <div *ngIf="submitted && f.sets.errors" class="invalid-feedback invalid-text-size">
+                                <div *ngIf="f.sets.errors.required">Number of sets is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group space">
+                            <label for="workout-sets">Reps per Set</label>
+                            <select formControlName="repsPerSet" class="form-control form-control-lg input-width" [ngClass]="{ 'is-invalid': submitted && f.repsPerSet.errors }">
+                                <option selected value="">Enter the number of reps per set...</option>
+                                <option selected value="1">1</option>
+                                <option selected value="2">2</option>
+                                <option selected value="3">3</option>
+                                <option selected value="4">4</option>
+                                <option selected value="5">5</option>
+                                <option selected value="6">6</option>
+                                <option selected value="7">7</option>
+                                <option selected value="8">8</option>
+                                <option selected value="9">9</option>
+                                <option selected value="10">10</option>
+                                <option selected value="11">11</option>
+                                <option selected value="12">12</option>
+                                <option selected value="13">13</option>
+                                <option selected value="14">14</option>
+                                <option selected value="15">15</option>
+                                <option selected value="16">16</option>
+                                <option selected value="17">17</option>
+                                <option selected value="18">18</option>
+                                <option selected value="19">19</option>
+                                <option selected value="20">20</option>
+                            </select>
+                            <div *ngIf="submitted && f.repsPerSet.errors" class="invalid-feedback invalid-text-size">
+                                <div *ngIf="f.repsPerSet.errors.required">Number of reps is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group buttons" style="padding-bottom: 0;">
+                            <button type="button" class="btn btn_secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn_primary">Save Workout</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="completedWorkouts.length !== 0">
+        <table class="greyGridTable">
+            <thead>
+                <tr>
+                    <th>Workout Type</th>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps/Set</th>
+                    <th>Edit/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let workout of completedWorkouts">
+                    <td>{{ workout.workoutType }}</td>
+                    <td>{{ workout.exerciseName }}</td>
+                    <td>{{ workout.sets }}</td>
+                    <td>{{ workout.repsPerSet }}</td>
+                    <td>
+                        <button class="icons" (click)="doEdit(workout.id)"><i class="fas fa-edit"></i></button> &nbsp;
+                        <button class="icons" (click)="doDelete(workout.id)"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="completedWorkouts.length == 0" class="alert alert-danger" role="alert" style="text-align: center;">
+        You have not logged in any workouts. Please click the "Add Workout" button to do so.
+    </div>
+
+
+    <button type="button" (click)="getWorkouts()">Get</button>
+</div>
