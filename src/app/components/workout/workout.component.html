@@ -5,7 +5,7 @@
 
     <div class="space buttons" style="padding: 10px;">
         <button type="button" class="btn btn_primary" data-toggle="modal" data-target="#addWorkout" data-backdrop="static">Add Workout</button>
-        <button type="button" class="btn btn_primary">Logout</button>
+        <button type="button" class="btn btn_primary" (click)="doLogout()">Logout</button>
     </div>
 
     <div class="modal fade" id="addWorkout" tabindex="-1" role="dialog" aria-labelledby="addWorkoutLabel" aria-hidden="true">
@@ -119,5 +119,5 @@
     </div>
 
 
-    <button type="button" (click)="getWorkouts()">Get</button>
+    <!-- <button type="button" (click)="getWorkouts()">Get</button> -->
 </div>

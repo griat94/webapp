@@ -21,6 +21,7 @@ export class WorkoutComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private workoutService: WorkoutService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -78,6 +79,10 @@ export class WorkoutComponent implements OnInit {
     console.log(workoutId);
     this.workoutService.deleteWorkout(workoutId)
       .subscribe(() => { this.getWorkouts() });
+  }
+
+  doLogout() {
+    this.router.navigate(['/home']);
   }
 
   removeValidators(form: FormGroup) {

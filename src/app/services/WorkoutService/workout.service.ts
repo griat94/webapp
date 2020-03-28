@@ -21,6 +21,10 @@ export class WorkoutService {
   }
 
   deleteWorkout(workoutId) {
-    return this.http.delete(this.baseUrl + "/deleteWorkout/" + workoutId);
+    return this.http.delete(this.baseUrl + "/deleteWorkout" + "/" + workoutId);
+  }
+
+  editWorkout(workoutId, workout: Workout) {
+    return this.http.put(this.baseUrl + "/editWorkout" + "/" + workoutId, workout);
   }
 }
