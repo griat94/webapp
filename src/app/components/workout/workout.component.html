@@ -3,6 +3,10 @@
         <h1>My Workouts</h1>
     </div>
 
+    <div style="padding: 10px; font-size: xx-large; color: darkblue; font-family: Comic Sans;">
+        <p>Hey there, {{ firstName }}!</p>
+    </div>
+
     <div class="space buttons" style="padding: 10px;">
         <button type="button" class="btn btn_primary" data-toggle="modal" data-target="#addWorkout" data-backdrop="static">Add Workout</button>
         <button type="button" class="btn btn_primary" (click)="doLogout()">Logout</button>
@@ -34,6 +38,14 @@
                             <div *ngIf="submitted && f.exerciseName.errors" class="invalid-feedback invalid-text-size">
                                 <div *ngIf="f.exerciseName.errors.required">Exercise Name is required</div>
                                 <div *ngIf="f.workoutType.errors.pattern">Invalid Exercise Name. Try using just alphabets!</div>
+                            </div>
+                        </div>
+                        <div class="form-group space">
+                            <label for="workout-weight">Weight (lbs)</label>
+                            <input formControlName="weight" class="form-control form-control-lg input-width" type="text" placeholder="Enter the lifted weight..." [ngClass]="{ 'is-invalid': submitted && f.weight.errors }">
+                            <div *ngIf="submitted && f.weight.errors" class="invalid-feedback invalid-text-size">
+                                <div *ngIf="f.weight.errors.required">Weight is required</div>
+                                <div *ngIf="f.weight.errors.pattern">Invalid Weight. Try using just digits!</div>
                             </div>
                         </div>
                         <div class="form-group space">
@@ -95,6 +107,7 @@
                 <tr>
                     <th>Workout Type</th>
                     <th>Exercise</th>
+                    <th>Weight (lbs)</th>
                     <th>Sets</th>
                     <th>Reps/Set</th>
                     <th>Edit/Delete</th>
@@ -104,6 +117,7 @@
                 <tr *ngFor="let workout of completedWorkouts">
                     <td>{{ workout.workoutType }}</td>
                     <td>{{ workout.exerciseName }}</td>
+                    <td>{{ workout.weight }}</td>
                     <td>{{ workout.sets }}</td>
                     <td>{{ workout.repsPerSet }}</td>
                     <td>

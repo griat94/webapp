@@ -4,4 +4,5 @@ export interface Workout {
     sets: number;
     repsPerSet: number;
     id: string;
+    weight: number;
 }

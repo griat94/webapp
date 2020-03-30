@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/LoginService/login.service';
+import { User } from 'src/app/interfaces/User';
 
 @Component({
   selector: 'app-login',
@@ -42,10 +43,10 @@ export class LoginComponent implements OnInit {
     } else {
       this.loginService.tryLogin(this.loginForm.value)
         .subscribe((val) => {
-          if (val) {
+          if (val[0] !== "false") {
+            this.loginService.saveUserInfo(val[0], val[1]);
             this.router.navigate(['/myWorkout']);
-          }
-          else {
+          } else {
             alert("Incorrect username or password! Please try again!")
           }
         });

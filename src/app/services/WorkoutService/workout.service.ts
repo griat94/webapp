@@ -16,8 +16,8 @@ export class WorkoutService {
     return this.http.post(this.baseUrl + "/addWorkout", workout);
   }
 
-  getWorkouts() {
-    return this.http.get(this.baseUrl + "/getWorkouts");
+  getWorkouts(userId) {
+    return this.http.get(this.baseUrl + "/getWorkouts" + "/" + userId);
   }
 
   deleteWorkout(workoutId) {
