@@ -12,6 +12,10 @@
         <button type="button" class="btn btn_primary" (click)="doLogout()">Logout</button>
     </div>
 
+    <div *ngIf="completedWorkouts.length == 0" class="alert alert-danger" role="alert" style="text-align: center;">
+        You have not logged in any workouts. Please click the "Add Workout" button to do so.
+    </div>
+
     <div class="modal fade" id="addWorkout" tabindex="-1" role="dialog" aria-labelledby="addWorkoutLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -110,28 +114,26 @@
                     <th>Weight (lbs)</th>
                     <th>Sets</th>
                     <th>Reps/Set</th>
-                    <th>Edit/Delete</th>
+                    <th *ngIf="!editing">Edit/Delete</th>
+                    <th *ngIf="editing">Save Changes</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let workout of completedWorkouts">
-                    <td>{{ workout.workoutType }}</td>
-                    <td>{{ workout.exerciseName }}</td>
-                    <td>{{ workout.weight }}</td>
-                    <td>{{ workout.sets }}</td>
-                    <td>{{ workout.repsPerSet }}</td>
-                    <td>
-                        <button class="icons" (click)="doEdit(workout.id)"><i class="fas fa-edit"></i></button> &nbsp;
+                    <td><input *ngIf="editing && editWorkoutId==workout.id" class="row-input" [(ngModel)]="workout.workoutType" /><span *ngIf="!editing || editWorkoutId!=workout.id">{{ workout.workoutType }}</span></td>
+                    <td><input *ngIf="editing && editWorkoutId==workout.id" class="row-input" [(ngModel)]="workout.exerciseName" /><span *ngIf="!editing || editWorkoutId!=workout.id">{{ workout.exerciseName }}</span></td>
+                    <td><input *ngIf="editing && editWorkoutId==workout.id" class="row-input" [(ngModel)]="workout.weight" /><span *ngIf="!editing || editWorkoutId!=workout.id">{{ workout.weight }}</span></td>
+                    <td><input *ngIf="editing && editWorkoutId==workout.id" class="row-input" [(ngModel)]="workout.sets" /><span *ngIf="!editing || editWorkoutId!=workout.id">{{ workout.sets }}</span></td>
+                    <td><input *ngIf="editing && editWorkoutId==workout.id" class="row-input" [(ngModel)]="workout.repsPerSet" /><span *ngIf="!editing || editWorkoutId!=workout.id">{{ workout.repsPerSet }}</span></td>
+                    <td *ngIf="editing && editWorkoutId==workout.id">
+                        <button class="icons" (click)="doSave(workout)"><i class="fas fa-save"></i></button>
+                    </td>
+                    <td *ngIf="!editing || editWorkoutId!=workout.id">
+                        <button class="icons" (click)="doEdit(workout)"><i class="fas fa-edit"></i></button> &nbsp;
                         <button class="icons" (click)="doDelete(workout.id)"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <div *ngIf="completedWorkouts.length == 0" class="alert alert-danger" role="alert" style="text-align: center;">
-        You have not logged in any workouts. Please click the "Add Workout" button to do so.
-    </div>
-
-
-    <!-- <button type="button" (click)="getWorkouts()">Get</button> -->
 </div>

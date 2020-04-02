@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/LoginService/login.service';
 
 import * as uuid from 'uuid';
+import { Workout } from 'src/app/interfaces/Workout';
 
 declare var jQuery: any;
 
@@ -15,10 +16,13 @@ declare var jQuery: any;
 })
 export class WorkoutComponent implements OnInit {
   workoutForm: FormGroup;
-  submitted = false;
-  completedWorkouts = [];
   userId: String;
   firstName: String;
+
+  submitted = false;
+  editing = false;
+  editWorkoutId = "";
+  completedWorkouts = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -81,15 +85,23 @@ export class WorkoutComponent implements OnInit {
       })
   }
 
-  doEdit(workoutId: string) {
-    console.log("EDITING!!!");
-    console.log(workoutId);
+  doEdit(workout: Workout) {
+    this.editing = true;
+    this.editWorkoutId = workout.id;
   }
 
   doDelete(workoutId: string) {
-    console.log(workoutId);
     this.workoutService.deleteWorkout(workoutId)
       .subscribe(() => { this.getWorkouts() });
+  }
+
+  doSave(workout: Workout) {
+    console.log(workout.id);
+    this.editing = false;
+    this.editWorkoutId = "";
+
+    this.workoutService.editWorkout(workout.id, workout)
+      .subscribe();
   }
 
   doLogout() {

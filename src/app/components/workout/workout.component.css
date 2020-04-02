@@ -58,3 +58,12 @@ table.greyGridTable tfoot td {
     border: 0;
     background: none;
 }
+
+.row-input {
+    background-color: darkgrey;
+    width: 150px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    color: red;
+}
