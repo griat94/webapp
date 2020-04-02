@@ -18,11 +18,18 @@ export class WorkoutComponent implements OnInit {
   workoutForm: FormGroup;
   userId: String;
   firstName: String;
+  sortByWokoutTypeFlag: String;
 
   submitted = false;
   editing = false;
   editWorkoutId = "";
   completedWorkouts = [];
+
+  sortByWorkoutTypeFlag = "";
+  sortByExerciseNameFlag = "";
+  sortByWeightFlag = "";
+  sortBySetsFlag = "";
+  sortByRepsPerSetFlag = "";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -83,6 +90,152 @@ export class WorkoutComponent implements OnInit {
         console.log(workout);
         Object.assign(this.completedWorkouts, workout);
       })
+  }
+
+  sortByWorkoutType() {
+    let i: number;
+    let temp = {};
+
+    if (this.sortByWorkoutTypeFlag === "" || this.sortByWorkoutTypeFlag === "false") {
+      this.sortByWorkoutTypeFlag = "true";
+      console.log(this.completedWorkouts[0].workoutType);
+
+      for (i = 0; i < this.completedWorkouts.length - 1; i++) {
+        if (this.completedWorkouts[i].workoutType.localeCompare(this.completedWorkouts[i + 1].workoutType) == 1) {
+          Object.assign(temp, this.completedWorkouts[i]);
+          Object.assign(this.completedWorkouts[i], this.completedWorkouts[i + 1]);
+          Object.assign(this.completedWorkouts[i + 1], temp);
+        }
+      }
+
+    } else {
+      this.sortByWorkoutTypeFlag = "false";
+
+      for (i = 0; i < this.completedWorkouts.length - 1; i++) {
+        if (this.completedWorkouts[i].workoutType.localeCompare(this.completedWorkouts[i + 1].workoutType) == -1) {
+          Object.assign(temp, this.completedWorkouts[i]);
+          Object.assign(this.completedWorkouts[i], this.completedWorkouts[i + 1]);
+          Object.assign(this.completedWorkouts[i + 1], temp);
+        }
+      }
+
+    }
+  }
+
+  sortByExerciseName() {
+    let i: number;
+    let temp = {};
+
+    if (this.sortByExerciseNameFlag === "" || this.sortByExerciseNameFlag === "false") {
+      this.sortByExerciseNameFlag = "true";
+
+      for (i = 0; i < this.completedWorkouts.length - 1; i++) {
+        if (this.completedWorkouts[i].exerciseName.localeCompare(this.completedWorkouts[i + 1].exerciseName) == 1) {
+          Object.assign(temp, this.completedWorkouts[i]);
+          Object.assign(this.completedWorkouts[i], this.completedWorkouts[i + 1]);
+          Object.assign(this.completedWorkouts[i + 1], temp);
+        }
+      }
+
+    } else {
+      this.sortByExerciseNameFlag = "false";
+
+      for (i = 0; i < this.completedWorkouts.length - 1; i++) {
+        if (this.completedWorkouts[i].exerciseName.localeCompare(this.completedWorkouts[i + 1].exerciseName) == -1) {
+          Object.assign(temp, this.completedWorkouts[i]);
+          Object.assign(this.completedWorkouts[i], this.completedWorkouts[i + 1]);
+          Object.assign(this.completedWorkouts[i + 1], temp);
+        }
+      }
+
+    }
+  }
+
+  sortByWeight() {
+    let i: number;
+    let temp = {};
+
+    if (this.sortByWeightFlag === "" || this.sortByWeightFlag === "false") {
+      this.sortByWeightFlag = "true";
+
+      for (i = 0; i < this.completedWorkouts.length - 1; i++) {
+        if (this.completedWorkouts[i].weight > this.completedWorkouts[i + 1].weight) {
+          Object.assign(temp, this.completedWorkouts[i]);
+          Object.assign(this.completedWorkouts[i], this.completedWorkouts[i + 1]);
+          Object.assign(this.completedWorkouts[i + 1], temp);
+        }
+      }
+
+    } else {
+      this.sortByWeightFlag = "false";
+
+      for (i = 0; i < this.completedWorkouts.length - 1; i++) {
+        if (this.completedWorkouts[i].weight < this.completedWorkouts[i + 1].weight) {
+          Object.assign(temp, this.completedWorkouts[i]);
+          Object.assign(this.completedWorkouts[i], this.completedWorkouts[i + 1]);
+          Object.assign(this.completedWorkouts[i + 1], temp);
+        }
+      }
+
+    }
+  }
+
+  sortBySets() {
+    let i: number;
+    let temp = {};
+
+    if (this.sortBySetsFlag === "" || this.sortBySetsFlag === "false") {
+      this.sortBySetsFlag = "true";
+
+      for (i = 0; i < this.completedWorkouts.length - 1; i++) {
+        if (this.completedWorkouts[i].sets > this.completedWorkouts[i + 1].sets) {
+          Object.assign(temp, this.completedWorkouts[i]);
+          Object.assign(this.completedWorkouts[i], this.completedWorkouts[i + 1]);
+          Object.assign(this.completedWorkouts[i + 1], temp);
+        }
+      }
+
+    } else {
+      this.sortBySetsFlag = "false";
+
+      for (i = 0; i < this.completedWorkouts.length - 1; i++) {
+        if (this.completedWorkouts[i].sets < this.completedWorkouts[i + 1].sets) {
+          Object.assign(temp, this.completedWorkouts[i]);
+          Object.assign(this.completedWorkouts[i], this.completedWorkouts[i + 1]);
+          Object.assign(this.completedWorkouts[i + 1], temp);
+        }
+      }
+
+    }
+  }
+
+  sortByRepsPerSet() {
+    let i: number;
+    let temp = {};
+
+    if (this.sortByRepsPerSetFlag === "" || this.sortByRepsPerSetFlag === "false") {
+      this.sortByRepsPerSetFlag = "true";
+
+      for (i = 0; i < this.completedWorkouts.length - 1; i++) {
+        if (this.completedWorkouts[i].repsPerSet > this.completedWorkouts[i + 1].repsPerSet) {
+          Object.assign(temp, this.completedWorkouts[i]);
+          Object.assign(this.completedWorkouts[i], this.completedWorkouts[i + 1]);
+          Object.assign(this.completedWorkouts[i + 1], temp);
+        }
+      }
+
+    } else {
+      this.sortByRepsPerSetFlag = "false";
+
+      for (i = 0; i < this.completedWorkouts.length - 1; i++) {
+        if (this.completedWorkouts[i].repsPerSet < this.completedWorkouts[i + 1].repsPerSet) {
+          Object.assign(temp, this.completedWorkouts[i]);
+          Object.assign(this.completedWorkouts[i], this.completedWorkouts[i + 1]);
+          Object.assign(this.completedWorkouts[i + 1], temp);
+        }
+      }
+
+    }
   }
 
   doEdit(workout: Workout) {

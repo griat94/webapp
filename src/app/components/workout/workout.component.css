@@ -67,3 +67,8 @@ table.greyGridTable tfoot td {
     text-align: center;
     color: red;
 }
+
+.search-box {
+    width: 700px;
+    margin: 30px 25% -30px;
+}

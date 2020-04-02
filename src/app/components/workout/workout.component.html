@@ -4,7 +4,7 @@
     </div>
 
     <div style="padding: 10px; font-size: xx-large; color: darkblue; font-family: Comic Sans;">
-        <p>Hey there, {{ firstName }}!</p>
+        <p>Hey there {{ firstName }}!</p>
     </div>
 
     <div class="space buttons" style="padding: 10px;">
@@ -105,15 +105,52 @@
         </div>
     </div>
 
+    <div *ngIf="completedWorkouts.length != 0" class="search-box input-group input-group-lg">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+        </div>
+        <input type="text" class="form-control">
+    </div>
+
     <div *ngIf="completedWorkouts.length !== 0">
         <table class="greyGridTable">
             <thead>
                 <tr>
-                    <th>Workout Type</th>
-                    <th>Exercise</th>
-                    <th>Weight (lbs)</th>
-                    <th>Sets</th>
-                    <th>Reps/Set</th>
+                    <th>
+                        Workout Type
+                        <button class="btn btn-md" style="padding: 0px;" (click)="sortByWorkoutType()">
+                            <i *ngIf="sortByWorkoutTypeFlag === '' || sortByWorkoutTypeFlag === 'false'" class="fas fa-arrow-up"></i>
+                            <i *ngIf="sortByWorkoutTypeFlag === 'true'" class="fas fa-arrow-down"></i>
+                        </button>
+                    </th>
+                    <th>
+                        Exercise
+                        <button class="btn btn-md" style="padding: 0px;" (click)="sortByExerciseName()">
+                            <i *ngIf="sortByExerciseNameFlag === '' || sortByExerciseNameFlag === 'false'" class="fas fa-arrow-up"></i>
+                            <i *ngIf="sortByExerciseNameFlag === 'true'" class="fas fa-arrow-down"></i>
+                        </button>
+                    </th>
+                    <th>
+                        Weight (lbs)
+                        <button class="btn btn-md" style="padding: 0px;" (click)="sortByWeight()">
+                            <i *ngIf="sortByWeightFlag === '' || sortByWeightFlag === 'false'" class="fas fa-arrow-up"></i>
+                            <i *ngIf="sortByWeightFlag === 'true'" class="fas fa-arrow-down"></i>
+                        </button>
+                    </th>
+                    <th>
+                        Sets
+                        <button class="btn btn-md" style="padding: 0px;" (click)="sortBySets()">
+                            <i *ngIf="sortBySetsFlag === '' || sortBySetsFlag === 'false'" class="fas fa-arrow-up"></i>
+                            <i *ngIf="sortBySetsFlag === 'true'" class="fas fa-arrow-down"></i>
+                        </button>
+                    </th>
+                    <th>
+                        Reps/Set
+                        <button class="btn btn-md" style="padding: 0px;" (click)="sortByRepsPerSet()">
+                            <i *ngIf="sortByRepsPerSetFlag === '' || sortByRepsPerSetFlag === 'false'" class="fas fa-arrow-up"></i>
+                            <i *ngIf="sortByRepsPerSetFlag === 'true'" class="fas fa-arrow-down"></i>
+                        </button>
+                    </th>
                     <th *ngIf="!editing">Edit/Delete</th>
                     <th *ngIf="editing">Save Changes</th>
                 </tr>
