@@ -39,15 +39,43 @@
         color: black;
     }
     
-    .jumbotron-display {
+    .home-page-jumbotron-display {
         text-align: center;
-        background-color: darkgoldenrod;
+        background-color: floralwhite;
         color: darkblue;
         font-family: fantasy;
         padding: 20px 32px;
     }
     
+    .jumbotron-display {
+        text-align: center;
+        background-color: dimgrey;
+        color: darkblue;
+        font-family: fantasy;
+        padding: 20px 32px;
+        margin: 0;
+    }
+    
     .input-width {
         width: 100%;
         height: 50px;
+        background: white;
+        border: none;
+        opacity: 75%;
+    }
+    
+    .input-width-2 {
+        width: 100%;
+        height: 50px;
+    }
+    
+    .landing-page {
+        position: relative;
+        margin: 0 auto;
+    }
+    
+    .landing-page .landing-page-content {
+        position: absolute;
+        bottom: 300px;
+        width: 100%;
     }

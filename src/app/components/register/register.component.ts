@@ -46,7 +46,13 @@ export class RegisterComponent implements OnInit {
       return;
     } else {
       this.registerService.registerUser(this.registerForm.value)
-        .subscribe(() => this.goBackToHome());
+        .subscribe((val) => {
+          if (val) {
+            this.goBackToHome();
+          } else {
+            alert("Username already exists! Please try another username!")
+          }
+        });
     }
   }
 
