@@ -172,22 +172,6 @@
                     </td>
                 </tr>
             </tbody>
-            <!-- <tbody *ngIf="filteredWorkouts.length !== 0">
-                <tr *ngFor="let workout of filteredWorkouts">
-                    <td><input *ngIf="editing && editWorkoutId==workout.id" class="row-input" [(ngModel)]="workout.workoutType" /><span *ngIf="!editing || editWorkoutId!=workout.id">{{ workout.workoutType }}</span></td>
-                    <td><input *ngIf="editing && editWorkoutId==workout.id" class="row-input" [(ngModel)]="workout.exerciseName" /><span *ngIf="!editing || editWorkoutId!=workout.id">{{ workout.exerciseName }}</span></td>
-                    <td><input *ngIf="editing && editWorkoutId==workout.id" class="row-input" [(ngModel)]="workout.weight" /><span *ngIf="!editing || editWorkoutId!=workout.id">{{ workout.weight }}</span></td>
-                    <td><input *ngIf="editing && editWorkoutId==workout.id" class="row-input" [(ngModel)]="workout.sets" /><span *ngIf="!editing || editWorkoutId!=workout.id">{{ workout.sets }}</span></td>
-                    <td><input *ngIf="editing && editWorkoutId==workout.id" class="row-input" [(ngModel)]="workout.repsPerSet" /><span *ngIf="!editing || editWorkoutId!=workout.id">{{ workout.repsPerSet }}</span></td>
-                    <td *ngIf="editing && editWorkoutId==workout.id">
-                        <button class="icons" (click)="doSave(workout)"><i class="fas fa-save"></i></button>
-                    </td>
-                    <td *ngIf="!editing || editWorkoutId!=workout.id">
-                        <button class="icons" (click)="doEdit(workout)"><i class="fas fa-edit"></i></button> &nbsp;
-                        <button class="icons" (click)="doDelete(workout.id)"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-            </tbody> -->
         </table>
     </div>
 </div>
