@@ -18,12 +18,13 @@ export class WorkoutComponent implements OnInit {
   workoutForm: FormGroup;
   userId: String;
   firstName: String;
-  sortByWokoutTypeFlag: String;
 
   submitted = false;
   editing = false;
   editWorkoutId = "";
+  filterWorkoutKeyWord = "";
   completedWorkouts = [];
+  filteredWorkouts = [];
 
   sortByWorkoutTypeFlag = "";
   sortByExerciseNameFlag = "";
@@ -81,6 +82,22 @@ export class WorkoutComponent implements OnInit {
         .find('input,select')
         .val('');
     }
+  }
+
+  filterWorkouts() {
+    this.filteredWorkouts = this.completedWorkouts.filter((workout) => {
+      return workout.workoutType.toLowerCase().includes(this.filterWorkoutKeyWord.toLowerCase()) || workout.exerciseName.toLowerCase().includes(this.filterWorkoutKeyWord.toLowerCase());
+    });
+
+    if (this.filterWorkoutKeyWord === "" || this.filterWorkoutKeyWord.charAt[0] === " ") {
+      this.getWorkouts();
+    }
+
+    if (this.filteredWorkouts.length === 0) {
+      this.filteredWorkouts = this.completedWorkouts;
+    }
+
+    this.completedWorkouts = this.filteredWorkouts;
   }
 
   getWorkouts() {
